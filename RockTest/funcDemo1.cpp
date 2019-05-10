@@ -4,110 +4,44 @@
 
 using namespace std;
 
-void login(void) {
-	string name;
-	string pwd;
-	
-	while (1) {
-		system("cls");
+#define WIDTH		40
+#define HEIGHT		15
 
-		std::cout << "ÇëÊäÈëÕËºÅ£º";
-		std::cin >> name;
-
-		std::cout << "ÇëÊäÈëÃÜÂë£º";
-		std::cin >> pwd;
-
-		if (name == "54hk" && pwd == "123456") {
-			//break;
-			return;
-		} else {
-                   cout << "ÓÃ»§Ãû»òÃÜÂë´íÎó!" << endl;
-			system("pause");
-		}
+void printInMiddle(string msg) {
+	int space = (WIDTH - msg.length()) /2 ;
+	for (int i=0; i<space; i++) {
+		cout << " ";
 	}
+	cout << msg << endl;
 }
 
 void menuShow(void) {
+	string menu[] = {
+		"1.ÍøÕ¾404¹¥»÷",
+		"2.ÍøÕ¾´Û¸Ä¹¥»÷",
+		"3.ÍøÕ¾¹¥»÷ÐÞ¸´",
+		"4.²é¿´¹¥»÷¼ÇÂ¼",
+		"5.ÍË³ö"
+	};
+
 	system("cls");
-	std::cout << "1.ÍøÕ¾404¹¥»÷" << std::endl;
-	std::cout << "2.ÍøÕ¾´Û¸Ä¹¥»÷" << std::endl;
-	std::cout << "3.ÍøÕ¾¹¥»÷ÐÞ¸´" << std::endl;
-	std::cout << "4.²é¿´¹¥»÷¼ÇÂ¼" << std::endl;
-	std::cout << "5.ÍË³ö" << std::endl;
-}
+	printInMiddle("---ºÚ¿Í¹¥»÷ÏµÍ³---");
 
-int menuChoise(void) {
-	int n = 0;
-
-	while (1) {
-		cin >> n;
-		if (cin.fail()) {
-			cin.clear();
-			cin.sync();
-			cout << "ÎÞÐ§ÊäÈë. ÇëÖØÐÂÊäÈë." << endl;
-			system("pause");
-		} else {
-			break;
+	// ¼ÆËã²Ëµ¥×î´ó³¤¶È£º
+	int max = 0;
+	int menuCount = sizeof(menu)/sizeof(menu[0]);
+	for (int i=0; i< menuCount; i++) {
+		if (menu[i].length() > max) {
+			max = menu[i].length();
 		}
 	}
 
-	return n;
-}
+	int leftSpace = (WIDTH - max) / 2;
 
-void attack404(void) {
-	system("cls");
-	cout << "404¹¥»÷..."; 
-	system("pause");
-}
-
-void siteEdit(void) {
-	system("cls");
-	cout << "ÍøÕ¾´Û¸Ä¹¥»÷..."; 
-	system("pause");
-}
-
-void siteRepair(void) {
-	system("cls");
-	cout << "ÍøÕ¾ÐÞ¸´..."; 
-	system("pause");
-}
-
-void attckRecord(void) {
-	system("cls");
-	cout << "²é¿´¹¥»÷¼ÇÂ¼"; 
-	system("pause");
-}
-
-int main(void) {
-	// µÇÂ¼
-	login();
-
-	while (1) {
-		menuShow();
-		int n = menuChoise();
-		switch (n) {
-		case 1:
-			attack404();
-			break;
-		case 2:
-			siteEdit();
-			break;
-		case 3:
-			siteRepair();
-			break;
-		case 4:
-			attckRecord();
-			break;
-		case 5:
-			//break;
-			return 0;
-		default:
-			cout << "ÎÞÐ§ÊäÈë. ÇëÖØÐÂÊäÈë." << endl;
-			system("pause");
-			break;
+	for (int i=0; i<menuCount; i++) {
+		for (int i=0; i<leftSpace; i++){
+			printf(" ");
 		}
+		cout << menu[i] << endl;
 	}
-
-	system("pause");
-	return 0;
 }
