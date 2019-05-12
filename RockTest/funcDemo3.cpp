@@ -78,3 +78,22 @@ void attckRecord(void) {
 	cout << retStr;
 	system("pause");
 }
+
+void input_pwd(char pwd[], int max_len) {
+	char c;
+	int i = 0;
+		
+	while (1) {
+		c = getch();
+        // getch不从输入缓冲区中读取
+		//在getch中，把回车按键输入，识别为回车符'\r'
+        //在getchar中，把回车按键输入，识别为换行符'\n'
+		if (c == '\r' || i >= max_len) {  
+			pwd[i] = 0;
+			break;
+		}
+		pwd[i++] = c;
+		printf("*", c);
+	}
+	printf("\n");
+}
