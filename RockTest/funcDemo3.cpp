@@ -1,28 +1,40 @@
 #include <iostream>
 #include <Windows.h>
 
-using namespace std;
-
-void scorePrint(int score[], int n) {
+void pyramid(int  n) {
 	for (int i=0; i<n; i++) {
-		cout << "第" << i+1 << "门成绩 : " << score[i] << endl;
+		for (int j=0; j<n-1-i; j++) {
+			std::cout << " ";
+		}
+		for (int j=0; j<2*i+1; j++) {
+			std::cout << "*";
+		}
+		std::cout << std::endl;
 	}
 }
 
-//每个成绩加5分
-void scoreAdd(int score[], int n, int val) {
-	for (int i=0; i<n; i++) {
-		score[i] += val;
-	}
-}
-
-int main(void) {
-	int score[3] = {60, 70, 80};
-
-	scorePrint(score, 3);
-	scoreAdd(score, 3, 5);
-	scorePrint(score, 3);
-
-	system("pause");
+int averageSalary(int data[], int n) {
 	return 0;
+}
+
+int fib(int n) {
+	if (n < 1) {
+		std::cout << "非常参数." << std::endl;
+		return -1;
+	}
+
+	if (n == 1 || n==2) {
+		return 1;
+	}
+
+	int a1 = 1;
+	int a2 = 1;
+	int tmp; 
+	for (int i=3; i<=n; i++) {
+		tmp = a1 + a2;
+		a1 = a2;
+		a2 = tmp;
+	}
+
+	return a2;
 }
